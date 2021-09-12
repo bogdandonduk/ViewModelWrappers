@@ -12,7 +12,7 @@ dependencies {
 	...  
   
 	def latest_version_tag = 2.1.2
-	implementation "com.github.bogdandonduk:ModalsToolbox:$latest_version_tag"  
+	implementation "com.github.bogdandonduk:ViewModelWrappers:$latest_version_tag"  
   
 	...  
 }  
