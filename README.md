@@ -35,8 +35,8 @@ allprojects {
   // implement one of the interfaces depending on which type of initialization you want
   
   class MainActivity : AppCompatActivity, SingleAutomaticInitializationWithInitializationViewModelHandlerActivity {
-    override var viewModelInitialization = {
-      MainActivityViewModel(repository = HomeRepositoty.getInstance())
+    override var viewModelInitialization = { intent: Intent ->
+      MainActivityViewModel(repository = HomeRepositoty.getInstance(cacheFilePath = intent.dataString))
     }
     
     override fun onCreate(savedInstanceState: Bundle?) {
