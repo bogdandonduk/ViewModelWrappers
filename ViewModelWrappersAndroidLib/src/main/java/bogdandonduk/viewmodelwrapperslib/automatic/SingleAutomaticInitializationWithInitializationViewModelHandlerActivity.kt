@@ -9,16 +9,16 @@ import androidx.lifecycle.ViewModelStoreOwner
 import bogdandonduk.viewmodelwrapperslib.core.GenericViewModelFactory
 
 interface SingleAutomaticInitializationWithInitializationViewModelHandlerActivity<T : ViewModel> {
-    var viewModelInitialization: (activity: Activity, intent: Intent) -> T
+    var viewModelInitialization: (activity: Activity) -> T
 
     fun getInitializedViewModel(activity: Activity, viewModelStoreOwner: ViewModelStoreOwner) : T {
-        val viewModel = viewModelInitialization.invoke(activity, activity.intent)
+        val viewModel = viewModelInitialization.invoke(activity)
 
         return ViewModelProvider(viewModelStoreOwner, GenericViewModelFactory(viewModel)).get(viewModel::class.java)
     }
 
     fun getInitializedViewModel(activity: Activity, viewModelStore: ViewModelStore) : T {
-        val viewModel = viewModelInitialization.invoke(activity, activity.intent)
+        val viewModel = viewModelInitialization.invoke(activity)
 
         return ViewModelProvider(viewModelStore, GenericViewModelFactory(viewModel)).get(viewModel::class.java)
     }
